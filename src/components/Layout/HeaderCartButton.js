@@ -1,11 +1,14 @@
-// import { useContext } from 'react';
-// import CartContext from '../../store/cart-context';
+import { useContext } from 'react';
+import CartContext from '../../store/cart-context';
 import classes from './/HeaderCartButton.module.css';
 import CartIcon from '../Cart/CartIcon';
 
 const HeaderCartButton = (props) => {
-    // const cartCtx = useContext(CartContext);
-
+    const cartCtx = useContext(CartContext);
+    let quantity = 0;
+    cartCtx.items.forEach((item) => {
+        quantity = quantity + Number(item.quantity);
+    })
 
 
     return (
@@ -16,7 +19,7 @@ const HeaderCartButton = (props) => {
             </span>
             <span >Your Cart</span>
             <span className={classes.badge}>
-                3
+                {quantity}
             </span>
         </button  >
     )

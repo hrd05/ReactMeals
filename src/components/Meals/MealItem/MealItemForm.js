@@ -6,17 +6,20 @@ import CartContext from '../../../store/cart-context';
 
 const MealItemForm = (props) => {
     const cartCtx = useContext(CartContext);
+    // console.log(props);
 
     const addItemsToCart = () => {
         // console.log(cartCtx.items)
-        cartCtx.addItem(props.items);
+        const quantity = document.getElementById('amount_' + props.items.id).value;
+        cartCtx.addItem({ ...props.items, quantity });
     }
 
     return (
 
         <form className={classes.form} >
+
             <Input label="Amount" input={{
-                id: 'amount',
+                id: 'amount_' + props.items.id,
                 type: 'number',
                 min: '1',
                 max: '5',

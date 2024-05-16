@@ -6,6 +6,55 @@
   overflow: auto;
 }
 
+.cart-items li {
+  display: flex;
+  justify-content: space-between;
+  padding: 8px;
+  border-bottom: 1px solid #ccc;
+}
+
+.main {
+  padding-right: 20%;
+}
+.prq {
+  display: flex;
+}
+
+.price {
+  font-weight: bold;
+  color: #8a2b06;
+}
+
+.quantity {
+  border: 1px solid rgba(53, 50, 50, 0.288);
+  border-radius: 5px;
+  width: 40px;
+  height: 30px;
+  text-align: center;
+}
+
+.cart-items button {
+  font: inherit;
+  font-weight: bold;
+  font-size: 1.25rem;
+  color: #8a2b06;
+  border: 1px solid #8a2b06;
+  width: 3rem;
+  text-align: center;
+  border-radius: 6px;
+  background-color: transparent;
+  cursor: pointer;
+  margin-left: 1rem;
+  margin: 0.25rem;
+  margin-top: 50%;
+}
+
+.cart-items button:hover,
+.cart-items button:active {
+  background-color: #8a2b06;
+  color: white;
+}
+
 .total {
   display: flex;
   justify-content: space-between;

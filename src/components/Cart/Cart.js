@@ -6,8 +6,35 @@ import CartContext from '../../store/cart-context';
 const Cart = (props) => {
     const cartCtx = useContext(CartContext);
     const addedItemsToCart = cartCtx.items;
+    // console.log(addedItemsToCart);
 
-    const cartItems = <ul className={classes['cart-items']} >{addedItemsToCart.map((item) => <li key={Math.random()}> {item.name} </li>)}</ul>
+    const addItemToCart = (event) => {
+        console.log(event.target.id);
+        const item = cartCtx.items.find((item) => item.id === event.target.id);
+        // item.quantity = '1';
+        cartCtx.addItem(item);
+    }
+
+    const removeItemFromCart = (event) => {
+        cartCtx.removeItem(event.target.id);
+    }
+
+    const cartItems = <ul className={classes['cart-items']} >{addedItemsToCart.map((item) =>
+        <li id={item.id} >
+            <div className={classes.main}>
+                <h3>{item.name}</h3>
+                <div className={classes.prq}>
+                    <div className={classes.price} >{'$' + item.price}</div>
+                    <div className={classes.quantity} >{'x ' + item.quantity}</div>
+                </div>
+            </div>
+            <div >
+                <button id={item.id} onClick={removeItemFromCart} >-</button>
+                <button id={item.id} onClick={addItemToCart}>+</button>
+            </div>
+        </li>
+    )}
+    </ul>
 
     return (
         <Modal onClose={props.onClose} >
